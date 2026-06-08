@@ -22,6 +22,8 @@ function App() {
 		return () => window.removeEventListener('keydown', handleKeyPress);
 	}, []);
 
+	// Checking
+
 	return (
 		<>
 			{mode === 'customer' ? <CustomerApp /> : <AdminApp />}
