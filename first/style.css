@@ -1,0 +1,786 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: #000;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #424242;
+    border-radius: 15px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575757;
+}
+* {
+    margin: 0;padding: 0;
+}
+
+body {
+    background-color: #141414;
+    color: whitesmoke;
+    width: 412px;
+    overflow-x: hidden;
+}
+
+p {
+    color: #999999;
+    font-size: 14px;
+}
+h1 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 28px;
+    line-height: 40px;
+}
+/* .txt button{
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+} */
+/* .absolute {
+    width: 1px;
+    height: 120cm;
+    z-index: 2000;
+    position: fixed;
+    background-color: white;
+    margin-left: 94%;
+    margin-top: -10%;
+} */
+
+.first-header {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+.navbar {
+    display: flex;
+    gap: 60%;
+    padding: 15px;
+    border: 1px solid #424242;
+}
+.menu {
+    display: block;
+    width: 28px
+}
+.menu div {
+    width: 25px;
+    height: 4px;
+    border-radius: 20px;
+    background-color: #fff;
+    margin-left: 70px;
+    margin-top: 4px;
+}
+nav {
+    display:none;
+    position: absolute;
+    left: 75%;
+    top: 8%;
+    z-index: 5;
+}
+nav ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+nav ul li {
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+nav button {
+    padding: 10px 9px;
+    width: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background-color: #141414;
+    color: white;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/* first Section  */
+
+.first-section {
+    padding: 15px;
+}
+.first-section .pic img {
+    width: 100%;
+    border-radius: 7px;
+}
+.first-section .txt1 {
+    margin-top: 10%;
+}
+.first-section .txt1 .buttons button {
+    width: 100%;
+    margin-top: 2%;
+}
+.first-section .txt1 .buttons button:nth-child(1) {
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+.first-section .txt1 .buttons button:nth-child(2) {
+    background-color: #703BF7;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+.first-section .sub-divs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3%;
+}
+.first-section .sub-divs div{
+    display: block;
+    height: 70px;
+    width: 40%;
+    padding: 15px;
+    align-content: center;
+    text-align: center;
+    border-radius: 10px;    
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    background-color: #262626;
+}
+.first-section .sub-divs div:nth-child(3) {
+    width: 100%;
+    margin-top: 3%;
+}
+.first-section .sub-divs div h4 {
+    font-size: 24px;
+    line-height: 40px;
+}
+/* Second Section */
+
+.second-section{
+    margin: 12px;
+    width: 90%;
+    border: 1px solid #262626;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+.second-section div {
+    margin: 1%;
+    width: 37%;
+    align-content: center;
+    background-color: #262626;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 20px;
+} 
+
+/* Third Section */
+.third-section {
+    padding: 15px;
+    width: 100%;
+}
+.third-section .sub-divs {
+    /* display: flex; */
+    /* overflow-x: scroll; */
+    margin: 20px 0px;
+    gap: 2%;
+}
+.third-section .sub-divs .content {
+    display: block;
+    width: 80%;
+    padding: 20px;
+    border-radius: 5px;
+    border: .1px solid #262626;
+}
+.third-section .sub-divs .content img{
+    width: 100%;
+}
+.third-section .sub-divs .content .content-txt {
+    margin-top: 5px;
+}
+.third-section .sub-divs .content .content-txt h5 {
+    font-size: 20px;
+}
+.third-section .sub-divs .content .content-txt p {
+    margin-top: 15px;
+
+}
+.third-section .sub-divs .content .minor-div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    gap: 10px;
+}
+.third-section .sub-divs .content .minor-div p{
+    border: .1px solid #262626;
+    border-radius: 25px;
+    padding: 10px;
+}
+.third-section .sub-divs .content .price {
+    display: flex;
+    margin-top: 20px;
+    gap: 35%;
+}
+.third-section .sub-divs .content .price p {
+    font-size: 14px;
+}
+.third-section .sub-divs .content .price h6 {
+    font-size: 20px;
+}
+.third-section .sub-divs .content .price button{
+    background-color: #703BF7;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+.third-section #thrdsec-btn:nth-child(2) {
+    display: none;
+}
+.third-section #thrdsec-btn {
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+
+/* comment */
+.comments {
+    display: block;
+    padding: 15px;
+}
+.comments h5 {
+    font-size: 20px;
+}
+.comments h6 {
+    font-size: 18px;
+}
+.comments p {
+    margin-top: 10px;
+}
+.comments .text {
+    display: block;
+}
+.comments .text .txt {
+    margin-top: 15px;
+    display: block;
+}
+.comments .sub-div {
+    margin-top: 15px;
+    gap: 3.8%;
+}
+.comments .sub-div .content {
+    display: block;
+    width: 85%;
+    margin: 20px 0px;
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #262626;
+}
+.comments #comment-btn:nth-child(2) {
+    display: none;
+}
+.comments #comment-btn:nth-child(1) {
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    display: block;
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+
+/* Fourth Section */
+
+.fourth-section {
+    display: block;
+    padding: 15px;
+}
+.fourth-section button{
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+.fourth-section #faq:nth-child(2) {
+    display: none;
+}
+.fourth-section #faq:nth-child(1) {
+    border: .1px solid rgba(255, 255, 255, 0.26);
+    display: block;
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+.fourth-section .text .txt {
+    margin-top: 15px;
+}
+.fourth-section .sub-divs {
+    margin-top: 15px;
+}
+.fourth-section .sub-divs .content {
+    display: block;
+    width: 80%;
+    margin: 20px 0px;
+    padding: 30px;
+    border-radius: 5px;
+    border: .1px solid #262626;
+}
+.fourth-section .sub-divs p {
+    padding: 15px 5px;
+}
+
+/* Conclusion */
+
+.conclusion {
+    display: block;
+    padding: 40px 20px;
+    border: 1px solid #262626;
+}
+.conclusion .text .txt2 {
+    margin-top: 15px;
+}
+.conclusion .text .txt2 button{
+    background-color: #703BF7;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 5%;
+}
+
+/* Footer */
+
+.footer {
+    display: block;
+    padding: 20px;
+}
+.info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.info div {
+    width: 40%;
+    padding: 10px;
+    margin: 2%;
+}
+.info div:nth-of-type(odd) {
+    border-right: 1px solid #424242;
+}
+.info div p {
+    line-height: 30px;
+}
+.info div a {
+    line-height: 25px;
+}
+.footer input {
+    border: .1px solid #262626;
+    border-radius: 10px;
+    background-color: #141414;
+    height: 20px;
+    width: 305px;
+    padding: 14px 20px;
+    color: white;
+}
+.end-line {
+    display: block;
+    padding: 10px 10px;
+    background-color: #262626;
+    text-align: center;
+    line-height: 30px;
+}
+.end-line a, p {
+    font-size: 14px;
+}
+
+
+
+@media only screen and (min-width: 415px) {
+    body {
+        width: 100%;
+    }
+    p {
+        font-size: 1px;
+    }
+    h3 {
+        font-size: 28px;
+    }
+    .navbar {
+        background-color: #262626;
+        padding: 10px 20px;
+        gap: 25%;
+        align-content: center;
+    }
+    .menu {
+        display: none;
+    }
+    nav {
+        position: relative;
+        width: 100%;
+        display: flex;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        margin-left: 5%;
+        font-size: 14px;
+    }
+    nav ul {
+        margin: 0;
+        display: flex;
+        list-style-type: none;
+    }
+    nav ul li {
+        align-self: center;
+        margin-left: 10px;
+        padding: 5px 10px;
+        /* line-height: 10px; */
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    nav ul li:hover {
+        background-color: #141414;
+    }
+    nav button {
+        padding: 15px 15px;
+        border: .1px solid rgba(255, 255, 255, 0.26);
+        background-color: #141414;
+        color: white;
+        border-radius: 5px;
+        height: fit-content;
+        font-size: 10px;
+        margin-left: 50%;
+        cursor: pointer;
+    }
+    
+    /* First Section */
+    
+    .first-section {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .first-section .text {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .first-section .txt1 {
+        margin-top: 5%;
+        width: 100%;
+        padding: 50px;
+        display: block;
+    }
+    .first-section .txt1 h1 {
+        font-size: 35px;
+    
+    }
+    .first-section .txt1 p {
+        font-size: 16px;
+    }
+    .first-section .txt1 .buttons {
+        display: flex;
+        gap: 10px;
+    }
+    .first-section .txt1 .buttons button {
+        width: 20%;
+    }
+    .first-section .txt1 .buttons button:nth-child(1) {
+        border: .1px solid rgba(255, 255, 255, 0.26);
+        background-color: #262626;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 10px;
+    }
+    .first-section .txt1 .buttons button:nth-child(2) {
+        background-color: #703BF7;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        /* width: 111px; */
+        padding: 10px;
+        font-size: 10px;
+    }
+    .first-section .txt1 .sub-divs {
+        display: flex;
+        margin-top: 5%;
+        gap: 10px;
+    }
+    .first-section .txt1 .sub-divs .sdiv {
+        display: block;
+        height: 70px;
+        width: 26%;
+        align-content: center;
+        border-radius: 5px;    
+        border: .1px solid rgba(255, 255, 255, 0.26);
+        background-color: #262626;
+    
+    }
+    .first-section .sub-divs div:nth-child(3) {
+        margin-top: 0;
+    }
+    .first-section .txt1 .sub-divs .sdiv h4{
+        font-size: 30px;
+    }
+    .first-section .txt1 .sub-divs .sdiv p {
+        font-size: 16px;
+    }
+    .first-section .pic img {
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    /* Second-Secttion */
+    
+    .second-section{
+        border: 6px solid #262626;
+        display: flex;
+        margin: 0;
+        width :98.5%;
+        gap: 5px;
+        margin-top: -8px;
+    }
+    .second-section div {
+        margin: 0;
+        width: 21.4%;
+        background-color: #262626;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+    
+    
+    /* Third Section */
+    .third-section { 
+        display: block;
+        padding: 50px;
+    }
+    .third-section .text .txt {
+        margin-top: 15px;
+        display: flex;
+        gap: 21.6%;
+    }
+    .third-section #thrdsec-btn:nth-child(1) {
+        display: none;
+    }
+    .third-section #thrdsec-btn:nth-child(2) {
+        border: .1px solid rgba(255, 255, 255, 0.26);
+        display: block;
+        background-color: #262626;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 10px;
+    }
+    .third-section .sub-divs {
+        display: flex;
+        margin-top: 15px;
+        gap: 2%;
+    }
+    .third-section .sub-divs .content {
+        display: block;
+        width: 24%;
+        padding: 30px;
+        border-radius: 5px;
+        border: .1px solid #262626;
+    }
+    .third-section .sub-divs .content img{
+        width: 100%;
+    }
+    .third-section .sub-divs .content .content-txt {
+        margin-top: 5px;
+    }
+    .third-section .sub-divs .content .content-txt h5 {
+        font-size: 20px;
+    }
+    .third-section .sub-divs .content .content-txt p {
+        margin-top: 15px;
+    
+    }
+    .third-section .sub-divs .content .minor-div {
+        display: flex;
+        margin-top: 15px;
+        gap: 10px;
+    }
+    .third-section .sub-divs .content .minor-div p{
+        border: .1px solid #262626;
+        border-radius: 25px;
+        padding: 10px;
+    }
+    .third-section .sub-divs .content .price {
+        display: flex;
+        margin-top: 20px;
+        gap: 35%;
+    }
+    .third-section .sub-divs .content .price p {
+        font-size: 14px;
+    }
+    .third-section .sub-divs .content .price h6 {
+        font-size: 20px;
+    }
+ 
+    
+    /* Comment */
+    
+    .comments {
+        display: block;
+        padding: 50px;
+    }
+    .comments h5 {
+        font-size: 20px;
+    }
+    .comments h6 {
+        font-size: 18px;
+    }
+    .comments p {
+        margin-top: 10px;
+    }
+    .comments .text .txt {
+        margin-top: 15px;
+        display: flex;
+        gap: 23%;
+    }
+    .comments #comment-btn:nth-child(1) {
+        display: none;
+    }
+    .comments #comment-btn:nth-child(2) {
+        border: .1px solid rgba(255, 255, 255, 0.26);
+        display: block;
+        background-color: #262626;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 10px;
+    }
+    .comments .sub-div {
+        display: flex;
+        margin-top: 15px;
+        gap: 3.8%;
+    }
+    .comments .sub-div .content {
+        display: block;
+        width: 25%;
+        padding: 30px;
+        border-radius: 5px;
+        border: .1px solid #262626;
+    }
+    /* Fourth section */
+    
+    .fourth-section {
+        display: block;
+        padding: 50px;
+    }
+    .fourth-section .text .txt {
+        margin-top: 15px;
+        display: flex;
+        gap: 24.7%;
+    }
+    .fourth-section #faq:nth-child(1) {
+        display: none;
+    }
+    .fourth-section #faq:nth-child(2) {
+        border: .1px solid rgba(255, 255, 255, 0.26);
+        display: block;
+        background-color: #262626;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 10px;
+    }
+    
+    .fourth-section .sub-divs {
+        display: flex;
+        margin-top: 15px;
+        gap: 3.4%;
+    }
+    .fourth-section .sub-divs .content {
+        display: block;
+        width: 27%;
+        padding: 30px;
+        border-radius: 5px;
+        border: .1px solid #262626;
+    }
+    .fourth-section .sub-divs p {
+        padding: 15px 5px;
+    }
+    
+    /* Conclusion */
+    .conclusion {
+        display: block;
+        padding: 50px;
+        border: 1px solid #262626;
+    }
+    .conclusion .text .txt2 {
+        margin-top: 15px;
+        display: flex;
+        gap: 28.5%;
+    }
+    .conclusion .text .txt2 button{
+        background-color: #703BF7;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        padding: 12px;
+        font-size: 10px;
+        width: 10%;
+        margin: 0;
+        height: fit-content;
+    }
+    
+    /* Footer */
+    .footer {
+        display: flex;
+        padding: 50px;
+        gap: 5%;
+        margin: 0;
+    }
+    .footer .logo {
+        margin-right: 5%;
+    }
+    .footer .info {
+        flex-wrap: nowrap;
+        margin: 0;
+    }
+    .footer .info div {
+        border: none;
+        margin: 0;
+        width: 25%;
+    }
+    .footer div a {
+        line-height: 26px;
+        font-size: 14px;
+    }
+    .footer input {
+        border: .1px solid #262626;
+        background-color: #141414;
+        height: 20px;
+        width: 305px;
+        padding: 14px 20px;
+    
+    }
+    .end-line {
+        display: flex;
+        padding: 25px;
+        gap: 10px;
+        background-color: #262626;
+    }
+    .end-line a, p {
+        font-size: 14px;
+    }
+}
+
