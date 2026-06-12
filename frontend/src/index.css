@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+
+    @apply font-urbanist;
+  }
+
+  body {
+    /* font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif; */
+    background-color: #F7F4F0;
+    color: #0D0D0D;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .cut-line {
+    background-image: repeating-linear-gradient(90deg, #D4CCC4 0, #D4CCC4 6px, transparent 6px, transparent 12px);
+    height: 1px;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
