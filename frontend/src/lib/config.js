@@ -19,8 +19,8 @@ export const CONFIG = {
   FLAVOURS: ['Classic', 'Sugar-dusted', 'Cinnamon', 'Chocolate drizzle', 'Pepper & spice'],
   CAMPUSES: ['Main campus', 'Mini campus', 'Hostel area', 'Staff quarters'],
 
-  STATUS_FLOW:    { pending: 'confirmed', confirmed: 'ready', ready: 'completed' },
-  STATUS_ACTIONS: { pending: 'Confirm order', confirmed: 'Mark ready', ready: 'Complete order' },
+  STATUS_FLOW:    { pending: 'confirmed', confirmed: 'approved', approved: 'completed' },
+  STATUS_ACTIONS: { pending: 'Confirm order', confirmed: 'approve order', approved: 'Complete order' },
 };
 
 export const makeRef    = () => `SP-${Math.floor(1000 + Math.random() * 9000)}`;

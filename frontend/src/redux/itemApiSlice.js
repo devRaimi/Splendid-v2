@@ -22,21 +22,28 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         createOrder: builder.mutation({
             query: (data) => ({
-                url: '/order/create',
+                url: '/api/order/create',
                 method: 'POST',
                 body: data
             })
         }),
         fetchOrder: builder.query({
             query: (data) => ({
-                url: '/order/fetchAll',
+                url: '/api/order/fetchAll',
                 method: 'GET',
             })
         }),
-        updateOrder: builder.query({
-            query: (data) => ({
-                url: '/order/fetchAll',
+        fetchOrderByRef: builder.query({
+            query: (ref) => ({
+                url: `/api/order/fetchOne/${ref}`,
                 method: 'GET',
+            })
+        }),
+        updateOrder: builder.mutation({
+            query: ({data, ref}) => ({
+                url: `/api/order/update/${ref}`,
+                method: 'PUT',
+                body: data
             })
         })
     })
@@ -47,4 +54,4 @@ export const {
     useFetchItemQuery,
 } = itemApiSlice
 
-export const {useCreateOrderMutation, useFetchOrderQuery, useUpdateOrderQuery} = orderApiSlice
+export const {useCreateOrderMutation, useFetchOrderQuery, useUpdateOrderMutation, useFetchOrderByRefQuery, useLazyFetchOrderByRefQuery} = orderApiSlice

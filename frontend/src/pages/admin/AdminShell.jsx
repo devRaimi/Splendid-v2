@@ -37,8 +37,8 @@ export default function AdminShell() {
 	return (
 		<div className='min-h-dvh bg-[#F0EBE3] flex flex-col'>
 			{/* ── Top nav ── */}
-			<header className='bg-night sticky top-0 z-50 border-b border-white/6'>
-				<div className='w-full mx-auto px-4 py-6 flex items-center justify- gap-4'>
+			<header className='bg-night sticky top-0 z-9999 border-b border-white/6'>
+				<div className='w-full mx-auto px-4 py-3.5 sm:px-5 sm:py-4 flex items-center justify-between sm:justify-center gap-4'>
 					{/* Brand */}
 					<div className='flex items-center gap-2.5 shrink-0'>
 						<div className='px-3 py-2 bg-puff rounded-lg flex items-center justify-center text-white text-lg font-bold'>
@@ -96,7 +96,7 @@ export default function AdminShell() {
 							href='/'
 							target='_blank'
 							rel='noreferrer'
-							className='flex items-center gap-2 px-3 py-2 rounded-xl text-[12px] font-semibold text-white/40 hover:text-white/70 hover:bg-white/5 transition'
+							className='flex items-center gap-2 px-3 py-2 rounded-xl text-base font-semibold text-white/40 hover:text-white/70 hover:bg-white/5 transition'
 						>
 							<svg
 								className='w-3.5 h-3.5'
@@ -115,7 +115,7 @@ export default function AdminShell() {
 						</a>
 						<button
 							onClick={logout}
-							className='flex items-center gap-2 px-3 py-2 rounded-xl text-[12px] font-semibold text-white/40 hover:text-red-400 hover:bg-white/5 transition'
+							className='flex items-center gap-2 px-3 py-2 rounded-xl text-base font-semibold text-white/40 hover:text-red-400 hover:bg-white/5 transition'
 						>
 							<svg
 								className='w-3.5 h-3.5'

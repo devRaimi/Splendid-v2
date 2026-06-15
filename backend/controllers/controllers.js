@@ -3,39 +3,55 @@ import Order from '../models/orderModel.js';
 import asyncHandler from '../middlewares/asyncHandler.js';
 
 const createOrder = asyncHandler(async (req, res) => {
+	// console.log(req.body)
 	const {
-		orderName,
-		type,
-		quantity,
-		price,
+		ref,
+		name,
+		phone,
 		location,
-		buyersName,
-		buyersWhatsapp,
-		deliveryLocation,
-		isTrue,
-		receipientName,
-		receipientWhatsapp,
-		receipientMessage,
+		notes,
+		senderPhone,
+		recipientName,
+		recipientPhone,
+		recipientLocation,
+		giftNote,
+		isGift,
+		itemsOrdered,
+		campus,
 	} = req.body;
+	const orders = JSON.parse(itemsOrdered);
+	orders.map((item) => {
+		item.quantity = Number(item.qty);
+	});
+	let gift;
+	isGift === 'false' ? (gift = false) : (gift = true);
+
 	let anonymous;
-	if (isTrue) {
+	if (gift) {
 		anonymous = {
-			receipientName,
-			receipientWhatsapp,
-			receipientMessage,
+			recipientName,
+			receipientWhatsapp: recipientPhone,
+			giftNote,
 		};
 	}
 	const data = {
-		orderName,
-		type,
-		quantity,
-		price,
-		location,
-		buyersName,
-		buyersWhatsapp,
-		deliveryLocation,
-		anonymous,
+		ref,
+		buyersName: name,
+		buyersWhatsapp: gift ? senderPhone : phone,
+		notes,
+		deliveryLocation: gift ? recipientLocation : location,
+		orders,
+		campus,
+		isGift: gift,
 	};
+	gift ? (data.anonymous = anonymous) : null;
+	const receipt = req.file
+		? { url: req.file.path, public_id: req.file.filename }
+		: null;
+	receipt ? (data.receipt = receipt) : null;
+	// console.log(data);
+	// console.log(req.body)
+
 	try {
 		const order = new Order({ ...data });
 		await order.save();
@@ -47,8 +63,16 @@ const createOrder = asyncHandler(async (req, res) => {
 
 const createItem = asyncHandler(async (req, res) => {
 	// console.log(req.body.sizeName);
-	const { name, type, sizeName, size, price, description, available, locationAvailable } =
-		req.body;
+	const {
+		name,
+		type,
+		sizeName,
+		size,
+		price,
+		description,
+		available,
+		locationAvailable,
+	} = req.body;
 	const image = req.file
 		? { url: req.file.path, public_id: req.file.filename }
 		: null;
@@ -64,7 +88,7 @@ const createItem = asyncHandler(async (req, res) => {
 			locationAvailable,
 			description,
 			available,
-			image
+			image,
 		});
 		await item.save();
 		res.json(item);
@@ -91,9 +115,24 @@ const getOrders = asyncHandler(async (req, res) => {
 	}
 });
 
+const getOrderByRef = asyncHandler(async (req, res) => {
+	try {
+		const data = await Order.findOne({ ref: req.params.ref });
+		res.json(data);
+	} catch (err) {
+		throw new Error(err);
+	}
+});
+
 const updateOrder = asyncHandler(async (req, res) => {
-	const order = await Order.findById(await req.params.id);
-	const { status } = req.body;
+	const order = await Order.findOne({ ref: req.params.ref });
+	const { isConfirmed, isApproved, isCompleted, isCancelled } = req.body;
+	const status = {
+		isConfirmed,
+		isApproved,
+		isCompleted,
+		isCancelled,
+	};
 	try {
 		order.status = status;
 		await order.save();
@@ -115,4 +154,11 @@ const updateItem = asyncHandler(async (req, res) => {
 	}
 });
 
-export { createOrder, createItem, getItems, getOrders, updateOrder };
+export {
+	createOrder,
+	createItem,
+	getItems,
+	getOrders,
+	updateOrder,
+	getOrderByRef,
+};

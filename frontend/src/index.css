@@ -1,14 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-@tailwind base;
+
+@import "tailwindcss";
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+
+@theme {
+  /* ─────────────────────────────────────
+     COLORS
+     ───────────────────────────────────── */
+  
+  /* Ink (dark text) */
+  --color-ink: #0D0D0D;
+  --color-ink-soft: #3D3730;
+  
+  /* Puff (brand orange) */
+  --color-puff: #FF5C00;
+  --color-puff-dim: #CC4900;
+  
+  /* Paper (light background) */
+  --color-paper: #F7F4F0;
+  --color-paper-warm: #EDE8E1;
+  --color-paper-border: #D4CCC4;
+  --color-paper-muted: #A89E94;
+  
+  /* Night (dark background) */
+  --color-night: #141210;
+  --color-night-surface: #1E1A16;
+
+  /* ─────────────────────────────────────
+     TYPOGRAPHY
+     ───────────────────────────────────── */
+  
+  --font-display: 'Syne', ui-sans-serif, sans-serif;
+  --font-sans: 'DM Sans', ui-sans-serif, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+  --font-urbanist: 'Urbanist', ui-sans-serif, sans-serif;
+
+  /* ─────────────────────────────────────
+     ANIMATION TIMING
+     ───────────────────────────────────── */
+  
+  --duration-slide-up: 0.35s;
+  --duration-pop: 0.3s;
+  --duration-shake: 0.4s;
+  
+  --easing-slide-up: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-shake: ease;
+
+  --breakpoint-sm: 700px;
+  --breakpoint-md: 900px;
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.93);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-6px);
+  }
+  40%, 80% {
+    transform: translateX(6px);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES FOR ANIMATIONS
+   ============================================ */
+
+.animate-slide-up {
+  animation: slide-up var(--duration-slide-up) var(--easing-slide-up) both;
+}
+
+.animate-pop {
+  animation: pop var(--duration-pop) var(--easing-pop) both;
+}
+
+.animate-shake {
+  animation: shake var(--duration-shake) var(--easing-shake);
+}
 
 @layer base {
   * {
 
-    @apply font-urbanist;
+    @apply font-urbanist border-paper-border;
   }
 
   body {

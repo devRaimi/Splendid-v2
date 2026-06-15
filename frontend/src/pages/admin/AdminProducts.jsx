@@ -63,18 +63,28 @@ export default function AdminProducts() {
 		setShowForm(true);
 	}
 
-	function openEdit(p) {
+	const openEdit = (p) => {
+		// setForm({
+		// 	name: p.name,
+		// 	image: p.image.url,
+		// 	price: String(p.size.price),
+		// 	type: p.type ?? '',
+		// 	locationAvailable: p.available,
+		// });
 		setForm({
 			name: p.name,
-			image: p.image,
-			price: String(p.price),
-			type: p.type ?? '',
-			hasFlavour: p.hasFlavour,
-			locationAvailable: p.available,
+			image: p.image.url,
+			price: p.size.price,
+			type: p.type,
+			size: p.size.quantity,
+			sizeName: p.size.sizeName,
+			description: p.description,
+			available: p.available,
+			locationAvailable: p.locationAvailable,
 		});
-		setEditId(p.id);
+		setEditId(p._id);
 		setShowForm(true);
-	}
+	};
 	const handleImage = (e) => {
 		setForm((prev) => ({ ...prev, image: e.target.files[0] }));
 		const url = URL.createObjectURL(e.target.files[0]);
@@ -117,22 +127,9 @@ export default function AdminProducts() {
 		if (!form.locationAvailable) {
 			return toast("Enter a the Location it's Available in", true, false);
 		}
-		// const payload = {
-		// 	name: form.name.trim(),
-		// 	emoji: form.emoji,
-		// 	price: Number(form.price),
-		// 	category: form.category,
-		// 	description: form.description,
-		// 	hasFlavour: form.hasFlavour,
-		// 	available: form.available,
-		// };
 		for (const [key, value] of Object.entries(form)) {
 			formData.append(key, value);
-			// console.log(formData)
 		}
-		// for (const [key, value] of formData.entries()) {
-		// 	console.log(key, value)
-		// }
 		try {
 			// setSaving(true);
 			if (editId) {
@@ -148,7 +145,7 @@ export default function AdminProducts() {
 				// toast('Product added');
 				const res = await createItem(formData).unwrap();
 				setShowForm(false);
-				refetch()
+				refetch();
 			}
 		} catch (err) {
 			console.log(err);
@@ -193,10 +190,10 @@ export default function AdminProducts() {
 	// console.log(products)
 
 	return (
-		<div className='p-6 max-w-4xl'>
+		<div className='py-6 px-10 w-full'>
 			<div className='mb-6 flex items-center justify-between'>
 				<div>
-					<h1 className='font-display font-bold text-[24px] text-ink'>
+					<h1 className='font-urbanist font-bold text-[24px] text-ink'>
 						Menu items
 					</h1>
 					<p className='text-[13px] text-paper-muted mt-0.5'>
@@ -225,14 +222,14 @@ export default function AdminProducts() {
 				<div className='space-y-8'>
 					{Object.entries(byCategory).map(([cat, items]) => (
 						<div key={cat}>
-							<p className='text-[11px] font-bold tracking-widest text-paper-muted mb-3 capitalize'>
+							<p className='text-sm font-bold tracking-widest text-paper-muted mb-3 capitalize'>
 								{cat}
 							</p>
-							<div className='flex items-center justify-between flex-wrap gap-3'>
+							<div className='flex items-center flex-wrap gap-3'>
 								{items.map((p) => (
 									<div
-										key={p.id}
-										className={`bg-white relative overflow-hidden capitalize rounded-2xl w-full md:w-[48.5%] sm:w-[32.5%] border border-paper-border flex flex-wrap items-center gap-4 transition ${!p.available ? 'opacity-50' : ''}`}
+										key={p._id}
+										className={`bg-white relative overflow-hidden capitalize rounded-2xl w-full sm:w-[48.5%] md:w-[32.5%] border border-paper-border flex flex-wrap items-center gap-4 transition ${!p.available ? 'opacity-50' : ''}`}
 									>
 										<div
 											style={{
@@ -240,7 +237,7 @@ export default function AdminProducts() {
 												backgroundPosition: 'center',
 												backgroundSize: 'cover',
 											}}
-											className='w-full h-[200px] bg-paper flex items-center justify-center text-2xl shrink-0'
+											className='w-full h-75 bg-paper flex items-center justify-center text-2xl shrink-0'
 										>
 											{/* {p.image.url} */}
 										</div>
@@ -269,8 +266,9 @@ export default function AdminProducts() {
 												</div>
 											</div>
 
-											
-											<div className='flex w-full items-center justify-between py-3 border-b'>
+											<div
+												className={`flex w-full items-center justify-between py-3 ${p.description ? 'border-b' : ''}`}
+											>
 												<div className='flex flex-col items-start w-full border-r'>
 													<span className='text-gray-500'>
 														Quantity
@@ -336,9 +334,11 @@ export default function AdminProducts() {
 													disabled={deleting === p.id}
 													className='p-2 absolute top-3 left-3 z-99 flex items-center justify-center rounded-lg border border-red-500 hover:bg-red-500 text-white transition duration-500 text-[13px]'
 												>
-													{deleting === p.id
-														? '…'
-														: <Trash2 className='size-5' />}
+													{deleting === p.id ? (
+														'…'
+													) : (
+														<Trash2 className='size-5' />
+													)}
 												</button>
 											</div>
 										</div>
@@ -352,7 +352,7 @@ export default function AdminProducts() {
 
 			{/* Slide-over form */}
 			{showForm && (
-				<div className='fixed inset-0 z-50 flex'>
+				<div className='fixed inset-0 z-9999 flex'>
 					<div
 						className='flex-1 bg-black/40 backdrop-blur-sm'
 						onClick={() => {
@@ -382,7 +382,7 @@ export default function AdminProducts() {
 								<FormLabel>Image</FormLabel>
 								<div
 									style={{
-										backgroundImage: `url(${showImage})`,
+										backgroundImage: `url(${showImage || form.image})`,
 										backgroundPosition: 'center',
 										backgroundSize: 'cover',
 									}}
