@@ -9,7 +9,7 @@ const FILTERS = [
 	'all',
 	'pending',
 	'confirmed',
-	'ready',
+	'approved',
 	'completed',
 	'cancelled',
 ];
@@ -17,7 +17,7 @@ const FILTERS = [
 const STATUS_COLORS = {
 	pending: 'bg-amber-100 text-amber-700 border-amber-200',
 	confirmed: 'bg-blue-100 text-blue-700 border-blue-200',
-	ready: 'bg-orange-100 text-orange-700 border-orange-200',
+	approved: 'bg-orange-100 text-orange-700 border-orange-200',
 	completed: 'bg-green-100 text-green-700 border-green-200',
 	cancelled: 'bg-zinc-100 text-zinc-500 border-zinc-200',
 };
@@ -25,7 +25,7 @@ const STATUS_COLORS = {
 const STATUS_BAR = {
 	pending: 'bg-amber-400',
 	confirmed: 'bg-blue-400',
-	ready: 'bg-orange-400',
+	approved: 'bg-orange-400',
 	completed: 'bg-green-500',
 	cancelled: 'bg-zinc-300',
 };
@@ -33,22 +33,24 @@ const STATUS_BAR = {
 const STATUS_ICONS = {
 	pending: '⏳',
 	confirmed: '✅',
-	ready: '🍩',
+	approved: '🍩',
 	completed: '🎉',
 	cancelled: '✕',
 };
 
 export default function AdminOrders() {
-	const { data } = useFetchOrderQuery();
+	const { data, refetch } = useFetchOrderQuery();
 	const toast = useToast();
 	const [orders, setOrders] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [filter, setFilter] = useState('all');
 	const [search, setSearch] = useState('');
+	const [total, setTotal] = useState([]);
 
 	const load = useCallback(async () => {
 		try {
 			setLoading(true);
+			refetch();
 			await setOrders(data);
 		} catch {
 			toast("Couldn't load orders", true);
@@ -57,30 +59,63 @@ export default function AdminOrders() {
 		}
 	}, [toast]);
 
+	const [status, setStatus] = useState();
+
 	useEffect(() => {
-		// load();
+		refetch();
 		data ? setOrders(data) : null;
+		orders.forEach((order) =>
+			order.orders.forEach((item) =>
+				setTotal((prev) => [...prev, item.subtotal]),
+			),
+		);
 		setLoading(false);
-	}, [data]);
+	}, [data, orders]);
 
 	const stats = useMemo(
 		() => ({
 			total: orders?.length,
-			pending: orders?.filter((o) => o.status === 'pending').length,
-			confirmed: orders?.filter((o) => o.status === 'confirmed').length,
-			ready: orders?.filter((o) => o.status === 'ready').length,
+			pending: orders?.filter(
+				(o) =>
+					!o.status.isConfirmed &&
+					!o.status.isApproved &&
+					!o.status.isCompleted &&
+					!o.status.isCancelled,
+			).length,
+			confirmed: orders?.filter((o) => o.status.isConfirmed).length,
+			approved: orders?.filter((o) => o.status.isApproved).length,
 			revenue: orders
-				?.filter((o) => o.isDelivered)
-				.reduce((s, o) => s + Number(o.total ?? 0), 0),
+				?.filter((o) => o.status.isCompleted)
+				.reduce((s, o) => {
+					let f = 0;
+					o.orders.forEach((item) => {
+						f += item.subtotal;
+						return f;
+					});
+					// const res =
+					// 	s + Number(o.orders.forEach((item) => item.subtotal));
+					return f + s;
+				}, 0),
 		}),
 		[orders],
 	);
+	const statusChecker = (st) => {
+		return st.isConfirmed
+			? 'confirmed'
+			: st.isApproved
+				? 'approved'
+				: st.isCompleted
+					? 'completed'
+					: st.isCancelled
+						? 'cancelled'
+						: 'pending';
+	};
 
 	const filtered = useMemo(() => {
 		let list =
 			filter === 'all'
 				? orders
-				: orders?.filter((o) => o.status === filter);
+				: orders?.filter((o) => statusChecker(o.status) === filter);
 		if (search.trim()) {
 			const q = search.toLowerCase();
 			list = list.filter(
@@ -159,9 +194,9 @@ export default function AdminOrders() {
 						highlight: false,
 					},
 					{
-						label: 'Ready',
-						value: stats.ready,
-						highlight: stats.ready > 0,
+						label: 'Approved',
+						value: stats.approved,
+						highlight: stats.approved > 0,
 						color: 'text-orange-500',
 					},
 					{
@@ -250,18 +285,19 @@ const OrderRow = ({ order: o, onAdvance }) => {
 	const isGift = o.isGift;
 	const [status, setStatus] = useState();
 	useEffect(() => {
-		o ? setStatus(
-			o.status.isConfirmed
-				? 'confirmed'
-				: o.status.isApproved
-					? 'approved'
-					: o.status.isCompleted
-						? 'completed'
-						: o.status.isCancelled
-							? 'cancelled'
-							: 'pending',
-		) :null
-		console.log(status)
+		o
+			? setStatus(
+					o.status.isConfirmed
+						? 'confirmed'
+						: o.status.isApproved
+							? 'approved'
+							: o.status.isCompleted
+								? 'completed'
+								: o.status.isCancelled
+									? 'cancelled'
+									: 'pending',
+				)
+			: null;
 	}, [o]);
 	const next = CONFIG.STATUS_ACTIONS[status];
 	let items = [];

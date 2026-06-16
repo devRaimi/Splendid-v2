@@ -49,7 +49,8 @@ export default function AdminOrderDetail() {
 							? 'approved'
 							: order?.status.isCompleted
 								? 'completed'
-								: 'pending',
+								:order?.status.isCancelled
+								? 'cancelled' : 'pending',
 				)
 			: null;
 		setSelectedStatus(status);
@@ -64,7 +65,6 @@ export default function AdminOrderDetail() {
 		const currentIndex = ALL_STATUSES.indexOf(selectedStatus);
 		const oldIndex = ALL_STATUSES.indexOf(status);
 		const index = currentIndex - oldIndex;
-		console.log(index, oldIndex);
 
 		const isCompleted = selectedStatus === 'completed' ? true : false;
 		const isApproved = selectedStatus === 'approved' ? true : false;
@@ -77,7 +77,6 @@ export default function AdminOrderDetail() {
 			index < oldIndex
 			// index  0
 		) {
-			console.log('not gonna work');
 			return;
 		}
 
