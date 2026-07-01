@@ -326,7 +326,7 @@ const Step1 = ({
 			{campus && (
 				<div>
 					<Label>Menu</Label>
-					<div className='grid grid-cols-2 gap-3 mt-2 h-max'>
+					<div className='grid sm:grid-cols-2 grid-cols-1 gap-3 mt-2 h-max'>
 						{products
 							.filter(
 								(p) =>
@@ -682,7 +682,7 @@ function Step3({ doneRef, isGift, reset }) {
 				</a>
 				<button
 					onClick={reset}
-					className='w-full py-3.5 rounded-2xl border border-paper-border text-[14px] font-semibold text-paper-muted hover:text-ink hover:border-paper-muted transition-colors'
+					className='w-full mt-3 py-3.5 rounded-2xl border border-paper-border text-[14px] font-semibold text-paper-muted hover:text-ink hover:border-paper-muted transition-colors'
 				>
 					Place another order
 				</button>
