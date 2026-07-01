@@ -131,13 +131,14 @@ export default function AdminProducts() {
 			formData.append(key, value);
 		}
 		try {
-			// setSaving(true);
+			setSaving(true);
 			if (editId) {
 				const updated = await updateProduct(editId, payload);
 				// setProducts((ps) =>
 				// 	ps.map((p) => (p.id === editId ? updated : p)),
 				// );
 				toast('Product updated');
+				setShowForm(false);
 				refetch();
 				// console.log('its editing');
 			} else {
