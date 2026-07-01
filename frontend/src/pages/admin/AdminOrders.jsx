@@ -179,7 +179,7 @@ export default function AdminOrders() {
 			</div>
 
 			{/* Stats */}
-			<div className='grid grid-cols-2 [&>div]:last:col-span-2 sm:grid-cols-5 gap-3 mb-6'>
+			<div className='grid grid-cols-2 [&>div]:last:col-span-2 sm:[&>div]:last:col-span-1 sm:grid-cols-5 gap-3 mb-6'>
 				{[
 					{ label: 'Total', value: stats.total, highlight: false },
 					{
