@@ -322,7 +322,7 @@ export default function AdminProducts() {
 											</button> */}
 												<button
 													onClick={() => openEdit(p)}
-													className='p-2 absolute top-3 right-3 z-99 flex items-center justify-center rounded-lg border border-paper-border hover:border-paper-muted hover:bg-white/60 text-white hover:text-ink transition text-sm duration-500'
+													className='p-2 absolute top-3 right-3 z-99! flex items-center justify-center rounded-lg border border-paper-border hover:border-paper-muted hover:bg-white/60 text-white hover:text-ink transition text-sm duration-500'
 												>
 													<Pen className='size-5' />
 													{/* ✎ */}
@@ -332,7 +332,7 @@ export default function AdminProducts() {
 														remove(p.id, p.name)
 													}
 													disabled={deleting === p.id}
-													className='p-2 absolute top-3 left-3 z-99 flex items-center justify-center rounded-lg border border-red-500 hover:bg-red-500 text-white transition duration-500 text-[13px]'
+													className='p-2 absolute top-3 left-3 z-99! flex items-center justify-center rounded-lg border border-red-500 hover:bg-red-500 text-white transition duration-500 text-[13px]'
 												>
 													{deleting === p.id ? (
 														'…'
