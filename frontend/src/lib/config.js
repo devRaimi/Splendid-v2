@@ -1,11 +1,15 @@
 export const CONFIG = {
   ADMIN_PIN: import.meta.env.VITE_ADMIN_PIN ?? '0000',
-  WHATSAPP_NUMBER: import.meta.env.VITE_WA_NUMBER ?? '2348000000000',
+  // WHATSAPP_NUMBER: import.meta.env.VITE_WA_NUMBER ?? '2348000000000',
+  WHATSAPP_NUMBER_MINNA: import.meta.env.VITE_WA_NUMBER_MINNA ?? '2349040233239',
+  WHATSAPP_NUMBER_ZARIA: import.meta.env.VITE_WA_NUMBER_ZARIA ?? '2349058482190',
 
   BANK: {
-    accountNumber: import.meta.env.VITE_BANK_ACCT ?? '0123456789',
-    bankName: import.meta.env.VITE_BANK_NAME ?? 'Opay',
-    accountName: import.meta.env.VITE_BANK_HOLDER ?? 'Splendid Puff',
+    minnaAccountNumber: import.meta.env.VITE_BANK_ACCT_MINNA ?? '8115781078',
+    zariaAccountNumber: import.meta.env.VITE_BANK_ACCT_ZARIA ?? '9058482190',
+    bankName: import.meta.env.VITE_BANK_NAME ?? 'Palmpay Bank',
+    minnaAccountName: import.meta.env.VITE_BANK_HOLDER_MINNA ?? 'Awwal Abdrahim - Splendid Puff - Minna',
+    zariaAccountName: import.meta.env.VITE_BANK_HOLDER_ZARIA ?? 'Sheu Hanifa - Splendid Puff - Zaria',
   },
 
   PRODUCTS: [

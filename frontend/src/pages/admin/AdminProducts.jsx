@@ -133,12 +133,13 @@ export default function AdminProducts() {
 		try {
 			// setSaving(true);
 			if (editId) {
-				// const updated = await updateProduct(editId, payload);
+				const updated = await updateProduct(editId, payload);
 				// setProducts((ps) =>
 				// 	ps.map((p) => (p.id === editId ? updated : p)),
 				// );
-				// toast('Product updated');
-				console.log('its editing');
+				toast('Product updated');
+				refetch();
+				// console.log('its editing');
 			} else {
 				// const created = await createProduct(payload);
 				// setProducts((ps) => [...ps, created]);
@@ -190,7 +191,7 @@ export default function AdminProducts() {
 	// console.log(products)
 
 	return (
-		<div className='py-6 px-10 w-full'>
+		<div className='py-6 px-5 sm:px-10 w-full'>
 			<div className='mb-6 flex items-center justify-between'>
 				<div>
 					<h1 className='font-urbanist font-bold text-[24px] text-ink'>

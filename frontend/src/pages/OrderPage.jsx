@@ -230,6 +230,7 @@ export default function OrderPage() {
 								doneRef={doneRef}
 								isGift={isGift}
 								reset={reset}
+								location={campus}
 							/>
 						)}
 					</>
@@ -555,10 +556,10 @@ const Step2 = ({
 						Bank account
 					</p>
 					<p className='font-mono text-[28px] font-medium tracking-wider text-white leading-none'>
-						{CONFIG.BANK.accountNumber}
+						{campus=== 'minna' ? CONFIG.BANK.minnaAccountNumber : CONFIG.BANK.zariaAccountNumber}
 					</p>
 					<p className='mt-2 text-[14px] text-white/70'>
-						{CONFIG.BANK.bankName} · {CONFIG.BANK.accountName}
+						{CONFIG.BANK.bankName} · {campus === 'minna' ? CONFIG.BANK.minnaAccountName : CONFIG.BANK.zariaAccountName}
 					</p>
 					<div className='mt-4 rounded-xl bg-white/8 border border-white/10 px-4 py-3'>
 						<p className='text-[12.5px] text-white/70 leading-relaxed'>
@@ -632,7 +633,7 @@ const Step2 = ({
 
 // ─── Step 3: Success ──────────────────────────────────────────────────────────
 
-function Step3({ doneRef, isGift, reset }) {
+function Step3({ doneRef, isGift, reset, location }) {
 	return (
 		<div className='animate-pop pt-16 pb-10 text-center'>
 			<div className='inline-flex w-20 h-20 items-center justify-center rounded-full bg-puff text-white text-3xl mb-5'>
@@ -670,7 +671,7 @@ function Step3({ doneRef, isGift, reset }) {
 			<div className='mt-8 space-y-3 max-w-xs mx-auto'>
 				<a
 					href={waLink(
-						CONFIG.WHATSAPP_NUMBER,
+						location === 'minna' ? CONFIG.WHATSAPP_NUMBER_MINNA : CONFIG.WHATSAPP_NUMBER_ZARIA,
 						`Hi! I just placed order ${doneRef} 🍩`,
 					)}
 					target='_blank'
