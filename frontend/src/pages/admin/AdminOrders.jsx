@@ -144,7 +144,7 @@ export default function AdminOrders() {
 	}
 
 	return (
-		<div className='p-10 h-full'>
+		<div className='p-5 sm:p-10 h-full'>
 			<div className='mb-6 flex items-start justify-between'>
 				<div>
 					<h1 className=' font-bold text-[24px] text-ink'>Orders</h1>
@@ -179,7 +179,7 @@ export default function AdminOrders() {
 			</div>
 
 			{/* Stats */}
-			<div className='grid grid-cols-5 gap-3 mb-6'>
+			<div className='grid grid-cols-2 [&>div]:last:col-span-2 sm:[&>div]:last:col-span-1 sm:grid-cols-5 gap-3 mb-6'>
 				{[
 					{ label: 'Total', value: stats.total, highlight: false },
 					{
@@ -222,24 +222,28 @@ export default function AdminOrders() {
 			</div>
 
 			{/* Filters + search */}
-			<div className='flex items-center gap-3 mb-5'>
-				<div className='flex gap-1.5 overflow-x-auto scrollbar-hide'>
-					{FILTERS.map((f) => (
-						<button
-							key={f}
-							onClick={() => setFilter(f)}
-							className={`shrink-0 px-4 py-2 rounded-xl text-[12.5px] font-semibold capitalize transition ${
-								filter === f
-									? 'bg-ink text-white'
-									: 'bg-white border border-paper-border text-paper-muted hover:text-ink hover:border-paper-muted'
-							}`}
-						>
-							{f === 'all' ? 'All' : `${STATUS_ICONS[f]} ${f}`}
-						</button>
-					))}
+			<div className='flex items-center sm:flex-row flex-col gap-3 mb-5'>
+				<div className='w-full overflow-'>
+					<div className='flex gap-1.5 overflow-x-auto scrollbar-hide'>
+						{FILTERS.map((f) => (
+							<button
+								key={f}
+								onClick={() => setFilter(f)}
+								className={`shrink-0 px-4 py-2 rounded-xl text-[12.5px] font-semibold capitalize transition ${
+									filter === f
+										? 'bg-ink text-white'
+										: 'bg-white border border-paper-border text-paper-muted hover:text-ink hover:border-paper-muted'
+								}`}
+							>
+								{f === 'all'
+									? 'All'
+									: `${STATUS_ICONS[f]} ${f}`}
+							</button>
+						))}
+					</div>
 				</div>
 				<input
-					className='ml-auto w-52 shrink-0 rounded-xl border border-paper-border bg-white px-4 py-2 text-[13px] text-ink placeholder:text-paper-muted outline-none focus:border-puff focus:ring-2 focus:ring-puff/10 transition'
+					className='ml-auto w-full sm:w-52 shrink-0 rounded-xl border border-paper-border bg-white px-4 py-2 text-[13px] text-ink placeholder:text-paper-muted outline-none focus:border-puff focus:ring-2 focus:ring-puff/10 transition'
 					placeholder='Search name, ref, phone…'
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
